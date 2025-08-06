@@ -36,8 +36,8 @@ Este projeto contém um script em Python que demonstra como calcular e visualiza
 No campo do Processamento de Linguagem Natural (PNL), entender o significado e o contexto das palavras é um desafio fundamental. Este modelo aborda esse desafio através de duas etapas principais:
 1. **Vetorização por Embeddings:** Cada palavra é convertida em um vetor numérico de alta dimensão. Este processo, conhecido como geração de embeddings, posiciona palavras com significados semelhantes em pontos próximos dentro de um "espaço de significados" vetorial. Palavras como "carro" e "automóvel", por exemplo, terão vetores muito próximos.
 2. **Cálculo da Matriz de Similaridade:** Uma vez que cada palavra é um vetor, podemos medir a "distância" ou "proximidade" entre elas. Este script utiliza a Similaridade de Cossenos, uma métrica que calcula o cosseno do ângulo entre dois vetores.
-    - Um score de 1.0 significa que as palavras são semanticamente idênticas ou muito próximas.
-    - Um score de 0.0 indica ausência de similaridade.
+    - Um score de ``1.0`` significa que as palavras são semanticamente idênticas ou muito próximas.
+    - Um score de ``0.0`` indica ausência de similaridade.
 O resultado final é uma matriz que exibe a pontuação de similaridade entre cada par de palavras na lista de entrada.
 
 ## Funcionamento
@@ -94,9 +94,8 @@ Recebendo palavras para modelo de vetorização...
 
 Digite a palavra ou aperte enter terminar: professor
 Digite a palavra ou aperte enter terminar: educador
-Digite a palavra ou aperte enter terminar: aluno
-Digite a palavra ou aperte enter terminar: escola
-Digite a palavra ou aperte enter terminar: universidade
+Digite a palavra ou aperte enter terminar: estudante
+Digite a palavra ou aperte enter terminar: ciências
 Digite a palavra ou aperte enter terminar: 
 
 Carregando o modelo de transformer...
@@ -108,20 +107,30 @@ Calculando a matriz de similaridade...
 Criando dataframe para visualização da matriz de similaridade com pandas...
 
 Tabela de Similaridade Semântica (Similaridade de Cossenos):
-              professor  educador  aluno  escola  universidade       
-professor         1.000     0.709  0.668   0.601         0.718  0.503
-educador          0.709     1.000  0.775   0.835         0.681  0.535
-aluno             0.668     0.775  1.000   0.817         0.829  0.568
-escola            0.601     0.835  0.817   1.000         0.792  0.635
-universidade      0.718     0.681  0.829   0.792         1.000  0.555
-                  0.503     0.535  0.568   0.635         0.555  1.000
+           professor  educador  estudante  ciências       
+professor      1.000     0.709      0.661     0.601  0.503
+educador       0.709     1.000      0.755     0.550  0.535
+estudante      0.661     0.755      1.000     0.565  0.523
+ciências       0.601     0.550      0.565     1.000  0.605
+               0.503     0.535      0.523     0.605  1.000
 ```
 
-# Licença
+## Análise da Tabela
+
+- **``professor`` e ``educador`` (0.709):** Como esperado, a similaridade é altíssima. As palavras são quase sinônimos em muitos contextos, então seus vetores no mapa da linguagem estão muito próximos.
+
+- **``professor`` e ``estudante`` (0.661):** A similaridade é alta, mas visivelmente menor que a anterior. Eles pertencem ao mesmo domínio (educação), mas ocupam papéis diferentes e complementares. Estão no mesmo "bairro" do mapa, mas não na mesma casa.
+
+- **``professor`` e ``ciências`` (0.601):** A conexão aqui também é forte. A combinação "professor de ciências" e "professor da ciência" ou campos da "ciência" para áreas de ensino é muito comum. O modelo entende que "ciências" é um campo de ensino para "professor".
+
+- **``estudante`` e ``ciências`` (0.565):** A similaridade é moderada. Um "estudante" pode ou não estar estudando "ciências". A conexão existe, mas é menos intrínseca do que a relação entre "professor" e "ciências" (todo professor ensina algo, ou algum tipo de "ciência") ou "professor" e "estudante".
+
+
+## Licença
 
 Este projeto está sob a licença *Apache 2.0*. Veja o arquivo `LICENSE` para mais detalhes.
 
-# Autor
+## Autor
 
 Patrícia Canossa Gagliardi
 
