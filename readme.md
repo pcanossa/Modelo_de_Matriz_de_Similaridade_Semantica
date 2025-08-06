@@ -10,26 +10,26 @@ O princípio fundamental é a Hipótese Distribucional: palavras que aparecem em
 
 Durante o treinamento em trilhões de frases, o modelo analisa as palavras que cercam cada termo.
 
-Em um exmeplo, onde as palavras são: "professor", "educador", "estudante", "ciências"
+Em um exmeplo, onde as palavras são: *"professor"*, *"educador"*, *"estudante"*, *"ciências"*
 
-- Ele nota que as palavras "professor" e "educador" aparecem frequentemente nos mesmos "bairros" de palavras, como "escola", "alunos", "ensinar", "universidade", "sala de aula" e "pedagogia".
-- Ele nota que "estudante" também aparece em muitos desses bairros, mas frequentemente em uma relação diferente (recebendo a ação, em vez de executá-la).
-- Ele nota que "ciências" aparece em alguns desses contextos ("professor de ciências", "estudante de ciências"), mas também em muitos outros, com palavras como "laboratório", "experimento", "física", "química", etc.
+- Ele nota que as palavras *"professor"* e *"educador"* aparecem frequentemente nos mesmos *"bairros"* de palavras, como *"escola"*, *"alunos"*, *"ensinar"*, *"universidade"*, *"sala de aula"* e *"pedagogia"*.
+- Ele nota que *"estudante"* também aparece em muitos desses bairros, mas frequentemente em uma relação diferente (recebendo a ação, em vez de executá-la).
+- Ele nota que *"ciências"* aparece em alguns desses contextos (*"professor de ciências"*, *"estudante de ciências"*), mas também em muitos outros, com palavras como *"laboratório",* *"experimento",* *"física",* *"química",* etc.
 
-O modelo, então, ajusta os vetores (as coordenadas no mapa) de modo que as palavras que compartilham contextos fiquem **geometricamente próximas** umas das outras. As palavras "professor" e "educador" acabam sendo posicionadas quase no mesmo lugar no mapa. "Estudante" fica por perto, mas em uma posição distinta. "Ciências" fica em uma região próxima, mas mais afastada, na direção do "conhecimento" e "assuntos acadêmicos".
+O modelo, então, ajusta os vetores (as coordenadas no mapa) de modo que as palavras que compartilham contextos fiquem **geometricamente próximas** umas das outras. As palavras *"professor"* e *"educador"* acabam sendo posicionadas quase no mesmo lugar no mapa. "Estudante" fica por perto, mas em uma posição distinta. "Ciências" fica em uma região próxima, mas mais afastada, na direção do *"conhecimento"* e *"assuntos acadêmicos"*.
 
 ## Medindo a Proximidade: Similaridade de Cossenos
 
 Para medir o quão "próximas" duas palavras estão nesse mapa, não usamos a distância comum. Usamos a Similaridade de Cossenos, que mede o ângulo entre os vetores.
 
-- Um ângulo de 0° (cosseno = 1.0) significa que os vetores apontam na mesma direção (significados quase idênticos).
-- Um ângulo de 90° (cosseno = 0.0) significa que são ortogonais (sem relação de significado).
+- **Um ângulo de 0° (cosseno = 1.0)** significa que os vetores apontam na mesma direção (significados quase idênticos).
+- **Um ângulo de 90° (cosseno = 0.0)** significa que são ortogonais (sem relação de significado).
 
 ---
 
 # Modelo de Matriz de Similaridade Semântica
 
-Este projeto contém um script em Python que demonstra como calcular e visualizar a similaridade semântica entre um conjunto de palavras fornecidas pelo usuário. Utilizando a arquitetura de modelos Transformer, o script transforma palavras em vetores de alta dimensão (embeddings) e, em seguida, calcula a proximidade entre elas usando a similaridade de cossenos.
+Este projeto contém um script em Python que demonstra como calcular e visualizar a similaridade semântica entre um conjunto de palavras fornecidas pelo usuário. Utilizando a arquitetura de modelos Transformer, o script transforma palavras em **vetores de alta dimensão (embeddings)** e, em seguida, calcula a proximidade entre elas usando a similaridade de cossenos.
 
 ## Visão Geral
 
